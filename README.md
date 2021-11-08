@@ -2,7 +2,7 @@
 
 Outline:
 
-This assignment has eight components:
+This project has eight components:
 
 1. Launch an ElasticSearch instance1
   a. Using AWS ElasticSearch service , create a new domain called “photos”.2
