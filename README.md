@@ -89,8 +89,6 @@ At this point you should be able to:
 2. Search photos using natural language via voice and text.
 3. See relevant results (ex. If you searched for a cat, you should be able to see photos with cats in them) based on what you searched.
 4. Upload new photos (with or without custom labels) and see them appear in the search results.
-13 https://aws.amazon.com/cloudformation/
-12 https://aws.amazon.com/codepipeline/
 
 
 Acceptance criteria:
