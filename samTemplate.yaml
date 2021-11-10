@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Serverless Specification template describing your function.
 Resources:
-  lf0:
+  searchphotos:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: lambda_function.lambda_handler
@@ -10,5 +10,11 @@ Resources:
       CodeUri: .
       Description: ''
       MemorySize: 128
-      Timeout: 30
-      Role: 'arn:aws:iam::524329147305:role/service-role/lf0-role-kt2wjxhn'
+      Timeout: 3
+      Role: 'arn:aws:iam::524329147305:role/service-role/search-photos-role-rtsnuaau'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-031a77edeaaf64dde
+        SubnetIds:
+          - subnet-0e5ce97f86d65e44b
+          - subnet-0efad0ee3db1ec0de
