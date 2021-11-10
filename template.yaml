@@ -35,7 +35,7 @@ Resources:
 #           REGION: us-east-1
 
   lf0:
-    Type: 'AWS::Serverless::Function'
+    Type: 'AWS::Lambda::Function'
     Properties:
       FunctionName: "lf0"
       Handler: lambda_function.lambda_handler
