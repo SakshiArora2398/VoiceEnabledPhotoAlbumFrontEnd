@@ -1,17 +1,9 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
-       python: 3.7
+      python: 3.8
   pre_build:
     commands:
       - pip install -r requirements.txt
-      - pip install -e .
-  build:
-    commands:
-      - pytest tests/unit/
-      - pytest tests/integration/ -rfs
-  post_build:
-    commands:
-      - python setup.py sdist bdist_wheel
+      - python app_test.py
