@@ -1,10 +1,14 @@
 version: 0.1
 phases:
-  install:
+  pre_build:
     commands:
-      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket storephotobucket --output-template-file outputsamtemplate.yml
+      - echo Installing source NPM dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
 artifacts:
-  type: zip
   files:
-    - samTemplate.yaml
-    - outputsamtemplate.yml
+    - '**/*'
+  base-directory: build
