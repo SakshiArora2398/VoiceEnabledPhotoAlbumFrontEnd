@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="./assets/js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
-      <script src="./assets/js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
-  
+<head>
+    <script src="./asset/js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+      <script src="./asset/js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+
       <!-- <script src="./assets/js/sdk/apigClient.js"></script> -->
-  
+
       <!-- <script src="./assets/js/aws-sdk.min.js"></script> -->
   </head>
 <body id="body">
@@ -61,31 +61,31 @@
     x=document.getElementById("myText").value;
     console.log(x);
     y=document.getElementById("myFile").value;
-    obj=document.getElementById("myFile").files[0];
-    let formData = new FormData();
-    formData.append("content", obj);
     var y = y.replace(/^.*\\/, "");
+    obj=document.getElementById("myFile").files[0];
+
     url='https://3janocxpuk.execute-api.us-east-1.amazonaws.com/test2'+'/upload?image='+y;
     fetch(url,{
         method:'PUT',
-        body:formData,
+        body:obj,
         headers: {
           "X-Api-Key": "qnjHu8HGxM4kPK9w0tOxk5CUQblwV47v29P8qqoN",
-          "x-amz-meta-customLabels": x
+          "x-amz-meta-customLabels": x,
+          "Content-Type": "image/jpeg"
       }
     }).then(response => console.log(response))
   .catch(error => console.log('Error while fetching:', error));
- 
+
   }
   function newfun(){
     if (!('webkitSpeechRecognition' in window)) {
     //Speech API not supported here…
     } else { //Let’s do some cool stuff :)
-        var recognition = new webkitSpeechRecognition(); //That is the object that will manage our whole recognition process. 
-        recognition.continuous = true;   //Suitable for dictation. 
+        var recognition = new webkitSpeechRecognition(); //That is the object that will manage our whole recognition process.
+        recognition.continuous = true;   //Suitable for dictation.
         recognition.interimResults = true;  //If we want to start receiving results even if they are not final.
         //Define some more additional parameters for the recognition:
-        recognition.lang = "en-US"; 
+        recognition.lang = "en-US";
         recognition.maxAlternatives = 1; //Since from our experience, the highest result is really the best...
     }
     recognition.onstart = function() {
@@ -99,7 +99,7 @@
         //Again – give the user feedback that you are not listening anymore. If you wish to achieve continuous recognition – you can write a script to start the recognizer again here.
     };
 
-    recognition.onresult = function(event) { 
+    recognition.onresult = function(event) {
 
       //the event holds the results
     //Yay – we have results! Let’s check if they are defined and if final or not:
@@ -108,22 +108,22 @@
             return;
         }
 
-        for (var i = event.resultIndex; i < event.results.length; ++i) {      
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) { //Final results
                 console.log("final results: " + event.results[i][0].transcript);   //Of course – here is the place to do useful things with the results.
             } else {   //i.e. interim...
                 console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
-            } 
+            }
         } //end for loop
-    }; 
+    };
   }
   function startButton(event) {
-    var recognition = new webkitSpeechRecognition(); //That is the object that will manage our whole recognition process. 
+    var recognition = new webkitSpeechRecognition(); //That is the object that will manage our whole recognition process.
         console.log(recognition);
-        recognition.continuous = true;   //Suitable for dictation. 
+        recognition.continuous = true;   //Suitable for dictation.
         recognition.interimResults = true;  //If we want to start receiving results even if they are not final.
         //Define some more additional parameters for the recognition:
-        recognition.lang = "en-US"; 
+        recognition.lang = "en-US";
         recognition.maxAlternatives = 1; //Since from our experience, the highest result is really the best...
     recognition.onstart = function() {
     console.log("started")
@@ -133,13 +133,13 @@
       console.log("ended")
     };
 
-    recognition.onresult = function(event) { 
+    recognition.onresult = function(event) {
         if (typeof(event.results) === 'undefined') { //Something is wrong…
             recognition.stop();
             return;
         }
 
-        for (var i = event.resultIndex; i < event.results.length; ++i) {      
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) { //Final results
                 transcribed=event.results[i][0].transcript
                 console.log("final results: " + transcribed);   //Of course – here is the place to do useful things with the results.
@@ -147,9 +147,9 @@
                 recognition.stop();
             } else {   //i.e. interim...
                 console.log("interim results: " + event.results[i][0].transcript);  //You can use these results to give the user near real time experience.
-            } 
+            }
         } //end for loop
-    }; 
+    };
     recognition.start();
     start_img.src = 'https://speechlogger.appspot.com/images/micslash2.png'; //We change the image to a slashed until the user approves the browser to listen and recognition actually starts. Then – we’ll change the image to ‘mic on’.
 }
